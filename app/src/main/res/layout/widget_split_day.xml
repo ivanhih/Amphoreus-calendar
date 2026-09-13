@@ -1,0 +1,8 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/split_cell" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+    android:orientation="vertical" android:gravity="center">
+    <TextView android:id="@+id/split_day" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:textSize="10sp" android:includeFontPadding="false"/>
+    <TextView android:id="@+id/split_dot" android:layout_width="match_parent" android:layout_height="4dp"
+        android:gravity="center" android:textSize="6sp" android:includeFontPadding="false"/>
+</LinearLayout>

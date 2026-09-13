@@ -1,0 +1,5 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/widget_cell" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+    <!-- 20dp 格子：11sp 数字（不含字体留白约 14dp）+ 5dp 圆点。颜色由 Widgets.render() 按月设置。 -->
+    <TextView android:id="@+id/widget_day" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textSize="11sp" android:includeFontPadding="false"/>
+    <TextView android:id="@+id/widget_dot" android:layout_width="match_parent" android:layout_height="5dp" android:gravity="center" android:textSize="7sp" android:includeFontPadding="false"/>
+</LinearLayout>

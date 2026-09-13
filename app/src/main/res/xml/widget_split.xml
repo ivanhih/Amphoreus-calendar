@@ -1,0 +1,7 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="300dp" android:minHeight="210dp" android:minResizeWidth="250dp" android:minResizeHeight="210dp"
+    android:targetCellWidth="5" android:targetCellHeight="3"
+    android:updatePeriodMillis="1800000" android:initialLayout="@layout/widget_split"
+    android:previewLayout="@layout/widget_split" android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen" android:configure="com.amphoreus.calendar.widget.WidgetConfigActivity"
+    android:widgetFeatures="reconfigurable" android:description="@string/widget_split_description"/>
