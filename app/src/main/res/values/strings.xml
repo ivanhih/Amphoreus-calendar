@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">翁法罗斯月历</string>
+    <string name="widget_month">翁法罗斯 · 主题月历</string>
+    <string name="widget_agenda">翁法罗斯 · 今日安排</string>
+    <string name="widget_split">翁法罗斯 · 图文月历</string>
+    <string name="widget_month_description">当月插画、可点击的日期和日程标记</string>
+    <string name="widget_agenda_description">插画陪伴下的今日与近期安排</string>
+    <string name="widget_split_description">左侧角色插画与右侧月历并排显示</string>
+</resources>

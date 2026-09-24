@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Amphoreus Calendar</string>
+    <string name="widget_month">Amphoreus · Theme Calendar</string>
+    <string name="widget_agenda">Amphoreus · Today Agenda</string>
+    <string name="widget_split">Amphoreus · Split Calendar</string>
+    <string name="widget_month_description">Monthly illustration, tappable dates and event markers</string>
+    <string name="widget_agenda_description">Today and upcoming events with an illustration</string>
+    <string name="widget_split_description">Character illustration beside a monthly calendar</string>
+</resources>

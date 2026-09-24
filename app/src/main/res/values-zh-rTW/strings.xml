@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">翁法羅斯行事曆</string>
+    <string name="widget_month">翁法羅斯 · 主題行事曆</string>
+    <string name="widget_agenda">翁法羅斯 · 今日安排</string>
+    <string name="widget_split">翁法羅斯 · 圖文行事曆</string>
+    <string name="widget_month_description">當月插畫、可點選的日期與行程標記</string>
+    <string name="widget_agenda_description">插畫陪伴下的今日與近期安排</string>
+    <string name="widget_split_description">左側角色插畫與右側月曆並排顯示</string>
+</resources>

@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="10dp" android:background="@drawable/widget_background">
+    <!--
+      插画块 weight=1 吃掉全部剩余高度，日期区是固定高度块（标题 28 + 星期 16 + 6x20 格子 + 页脚 16 + 今日安排 44 = 224dp，
+      必须与 core.WidgetBudget.MONTH_DATE_BLOCK_DP 逐项一致，CoreTests 会核对）。
+      这是 RemoteViews 的限制逼出来的写法：API 31 以下改不了 View 的高度，只能靠权重+固定块。
+      这样"插画优先"不需要动态布局参数——卡片越高，多出来的高度全给插画；4x6 的最后一行固定显示今日安排。
+      取景由 Art.poster() 以当月细节质心为中心放置，颜色由 Widgets.render() 按月设置。
+    -->
+    <ImageView android:id="@+id/widget_art" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:scaleType="centerCrop" android:contentDescription="当月插画"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="28dp" android:gravity="center_vertical" android:orientation="horizontal">
+        <TextView android:id="@+id/widget_previous" android:layout_width="32dp" android:layout_height="match_parent" android:gravity="center" android:text="‹" android:textSize="18sp" android:contentDescription="上个月"/>
+        <!-- 点月名回到本月（旧版这一下在单独的 30dp 行上，合并进来省一整行给插画）。 -->
+        <TextView android:id="@+id/widget_title" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:gravity="center" android:maxLines="1" android:ellipsize="end" android:textSize="13sp" android:contentDescription="回到本月"/>
+        <TextView android:id="@+id/widget_next" android:layout_width="32dp" android:layout_height="match_parent" android:gravity="center" android:text="›" android:textSize="18sp" android:contentDescription="下个月"/>
+        <TextView android:id="@+id/widget_config" android:layout_width="28dp" android:layout_height="match_parent" android:gravity="center" android:text="⚙" android:textSize="14sp" android:contentDescription="配置卡片"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/widget_weekdays" android:layout_width="match_parent" android:layout_height="16dp" android:orientation="horizontal"/>
+    <LinearLayout android:id="@+id/widget_grid" android:layout_width="match_parent" android:layout_height="120dp" android:orientation="vertical"/>
+    <TextView android:id="@+id/widget_footer" android:layout_width="match_parent" android:layout_height="16dp" android:textSize="9sp" android:gravity="center_vertical" android:maxLines="1" android:ellipsize="end"/>
+    <LinearLayout android:id="@+id/widget_today" android:layout_width="match_parent" android:layout_height="44dp" android:gravity="center_vertical" android:orientation="horizontal" android:paddingStart="6dp" android:paddingEnd="4dp" android:background="@drawable/widget_today_background">
+        <TextView android:id="@+id/widget_today_label" android:layout_width="58dp" android:layout_height="match_parent" android:gravity="center_vertical" android:maxLines="1" android:ellipsize="end" android:text="今日安排" android:textSize="10sp"/>
+        <LinearLayout android:id="@+id/widget_today_events" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical"/>
+    </LinearLayout>
+</LinearLayout>
