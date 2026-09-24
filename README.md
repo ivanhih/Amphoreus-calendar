@@ -25,7 +25,17 @@ APK 输出在 `app/build/outputs/apk/debug/app-debug.apk`。也可以在本机�
 .\scripts\build.ps1
 ```
 
-离线脚本生成 `dist/amphoreus-calendar-debug.apk`。这两个构建产物均为调试版本；发布到应用商店前需要配置正式签名。
+离线脚本和 `assembleDebug` 生成的都是调试版本。正式版请按下面的步骤构建。
+
+### 正式版 APK
+
+正式版使用独立发布密钥签名，并关闭调试功能。在本机安全保存 `.signing/release.keystore` 和 `.signing/release.properties` 后运行：
+
+```powershell
+.\gradlew.bat assembleRelease
+```
+
+APK 输出在 `app/build/outputs/apk/release/app-release.apk`。`.signing/` 已加入 Git 忽略规则，密钥和密码不会提交到仓库。请将这两个文件一起备份到安全位置；以后每次更新都要继续使用同一密钥，并递增 `versionCode`。调试版与正式版的签名不同，切换时已安装调试版的用户需要卸载后再安装正式版。
 
 ## 使用说明
 

@@ -1,4 +1,13 @@
 plugins { id 'com.android.application' }
+
+def releaseSigningPropertiesFile = rootProject.file('.signing/release.properties')
+def releaseSigningProperties = new Properties()
+if (releaseSigningPropertiesFile.exists()) {
+    releaseSigningPropertiesFile.withInputStream { releaseSigningProperties.load(it) }
+} else if (gradle.startParameter.taskNames.any { it.toLowerCase().contains('release') }) {
+    throw new GradleException('Missing .signing/release.properties. Restore your local release signing files before building a release.')
+}
+
 android {
     namespace 'com.amphoreus.calendar'
     compileSdk 35
@@ -10,5 +19,21 @@ android {
         versionName '1.0.0'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
-    buildTypes { release { minifyEnabled false } }
+    signingConfigs {
+        if (releaseSigningPropertiesFile.exists()) {
+            release {
+                storeFile rootProject.file(releaseSigningProperties.getProperty('storeFile'))
+                storePassword releaseSigningProperties.getProperty('storePassword')
+                keyAlias releaseSigningProperties.getProperty('keyAlias')
+                keyPassword releaseSigningProperties.getProperty('keyPassword')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (releaseSigningPropertiesFile.exists()) signingConfig signingConfigs.release
+            debuggable false
+            minifyEnabled false
+        }
+    }
 }
